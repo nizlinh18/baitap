@@ -1,0 +1,12 @@
+
+body{
+    text-align: center;
+    margin: 0 20% ;
+}
+.dropcap {
+    float: left;
+    font-size: 3em;
+    line-height: 1;
+    margin: 0 0.1em 0 0;
+    color: #333;
+}
