@@ -1,0 +1,28 @@
+.item {
+    color: gray;
+}
+.note {
+    background-color: rgb(229, 228, 228);
+}
+body {
+    width: 1000px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+h1 {
+    font-size: 2.6em;
+    line-height: 1.21;
+    font-family: "Segoe UI Light", "wf_segoe-ui_light", Arial, "Helvetica Neue", Verdana, Helvetica, Sans-Serif;
+    font-weight: 300;
+}
+h2 {
+    margin-top: 40px;
+    font-family: "Segoe UI Light", "wf_segoe-ui_light", Arial, "Helvetica Neue", Verdana, Helvetica, Sans-Serif;
+    font-weight: 300;
+    font-size: 2.1em;
+    line-height: 1.25;
+}
+p {
+    font-family: "Segoe UI", "Segoe UI Web", "wf_segoe-ui_normal", "Helvetica Neue", "BBAlpha Sans", "S60 Sans", Arial, sans-serif;
+    font-size: 1.4em;
+}
