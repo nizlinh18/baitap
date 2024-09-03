@@ -1,0 +1,19 @@
+.box{
+    a:link, a:visited {
+        background-color: green;
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+      }
+      
+      a:hover, a:active {
+        background-color: green;
+}}
+body{
+    margin: 0 20% ;
+}
+.yellow{
+    background-color: rgb(255, 255, 142);
+}
