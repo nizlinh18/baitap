@@ -218,5 +218,27 @@ h1{
         </div>
         </div>
     </div>
-
+<script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+    <script>
+        document.onkeydown = function(e) {
+          // Chặn F12
+          if (e.keyCode === 123) {
+            return false;
+          }
+          // Chặn Ctrl + Shift + I
+          if (e.ctrlKey && e.shiftKey && e.key === 'I' || e.key === 'i') {
+            return false;
+          }
+          // Chặn Ctrl + U (Xem mã nguồn)
+          if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+            return false;
+          }
+          // Chặn Ctrl + Shift + J (Mở console)
+          if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j')) {
+            return false;
+          }
+        };
+      </script>
 </body>
