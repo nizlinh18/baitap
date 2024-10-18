@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phép tính</title>
+    <style>
+        body{
+            margin: 20px;
+        }
+        .container{
+            margin: 10px 0;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+        input[type="number"], input[type="text"]{
+            width: 50px;
+            text-align: center;
+            margin: 0 5px;
+        }
+        button {
+            margin-left: 10px;
+        }
+        #history{
+            margin-top: 20px;
+        }
+        #history div{
+            margin: 5px 0;
+        }
+        #history .add{
+            color:blue;
+        }
+        #history .sub{
+            color: purple;
+        }
+        #history .mul{
+            color: yellow;
+        }
+        #history .div{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Các phép toán</h1>
+
+    <div class="container">
+    <label>Phép cộng</label>
+    <input type="number" id="add1">+
+    <input type="number" id="add2">=
+    <input type="text" id="kquacong" readonly>
+    <button onclick="calculate('add')">Tính</button>
+    </div>
+
+    <div class="container">
+    <label>Phép trừ</label>
+    <input type="number" id="sub1">-
+    <input type="number" id="sub2">=
+    <input type="text" id="kquatru" readonly>
+    <button onclick="calculate('sub')">Tính</button>
+    </div>
+
+    <div class="container">
+        <label>Phép nhân</label>
+        <input type="number" id="mul1">*
+        <input type="number" id="mul2">=
+        <input type="text" id="kquanhan" readonly>
+        <button onclick="calculate('mul')">Tính</button>
+    </div>
+
+    <div class="container">
+        <label>Phép chia</label>
+        <input type="number" id="div1">/
+        <input type="number" id="div2">=
+        <input type="text" id="kquachia" readonly>
+        <button onclick="calculate('div')">Tính</button>
+    </div>
+    
+
+    <h1>Các phép toán vừa thực hiện</h1>
+    <div id="history"></div>
+
+    <script>
+        function calculate(container) {
+    let result;
+    let historyText;
+    
+    switch(container) {
+        case 'add':
+            const add1 = parseFloat(document.getElementById('add1').value);
+            const add2 = parseFloat(document.getElementById('add2').value);
+            result = add1 + add2;
+            document.getElementById('kquacong').value = result;
+            historyText = `Phép cộng ${add1} + ${add2} = ${result}`;
+            addHistory(historyText, 'add');
+            break;
+        case 'sub':
+            const sub1 = parseFloat(document.getElementById('sub1').value);
+            const sub2 = parseFloat(document.getElementById('sub2').value);
+            result = sub1 - sub2;
+            document.getElementById('kquatru').value = result;
+            historyText = `Phép trừ ${sub1} - ${sub2} = ${result}`;
+            addHistory(historyText, 'sub');
+            break;
+        case 'mul':
+            const mul1 = parseFloat(document.getElementById('mul1').value);
+            const mul2 = parseFloat(document.getElementById('mul2').value);
+            result = mul1 * mul2;
+            document.getElementById('kquanhan').value = result;
+            historyText = `Phép nhân ${mul1} * ${mul2} = ${result}`;
+            addHistory(historyText, 'mul');
+            break;
+        case 'div':
+            const div1 = parseFloat(document.getElementById('div1').value);
+            const div2 = parseFloat(document.getElementById('div2').value);
+            if (div2 !== 0) {
+                result = div1 / div2;
+                document.getElementById('kquachia').value = result;
+                historyText = `Phép chia ${div1} / ${div2} = ${result}`;
+            } else {
+                result = 'Không thể chia cho 0';
+                document.getElementById('kquachia').value = result;
+                historyText = `Phép chia ${div1} / ${div2} = ${result}`;
+            }
+            addHistory(historyText, 'div');
+            break;
+    }
+}
+
+function addHistory(text, type) {
+    const history = document.getElementById('history');
+    const div = document.createElement('div');
+    div.textContent = text;
+    div.className = type;
+    history.appendChild(div);
+}
+
+    </script>
+    <!-- <div class="his"></div>
+
+        <script>
+            function calculate(container){
+                let result;
+                let historyText;
+                switch(container){
+                    case'add':
+                        const add1 = parseFloat(document.getElementById('add1').value);
+                        const add2 = parseFloat(document.getElementById('add2').value);
+                        result=add1+add2;
+                        document.getElementById('kquacong').value=result;
+                        historyText = `PHÉP CỘNG ${add1} + ${add2} = ${result}`;
+                        addHistory(historyText, 'add');
+                        break;
+                    case'sub':
+                        const sub1 = parseFloat(document.getElementById('sub1').value);
+                        const sub2 = parseFloat(document.getElementById('sub2').value);
+                        result=sub1-sub2;
+                        document.getElementById('kquatru').value=result;
+                        historyText=`Phép trừ ${sub1} - ${sub2}=${result}`;
+                        addHistory(historyText,'sub');
+                        break;
+                    case 'mul':
+                        const mul1=parseFloat(document.getElementById('mul1').value);
+                        const mul2= parseFloat(document.getElementById('mul2').value);
+                        result=mul1*mul2;
+                        document.getElementById('kquanhan').value=result;
+                        historyText=`Phép nhân ${mul1} * ${mul2} = ${result}`;
+                        addHistory(historyText,'mul');
+                        break;
+                    case'div': 
+                        const div1 =parseFloat(document.getElementById('div1').value);
+                        const div2=parseFloat(document.getElementById('div2').value);
+                        if (div2 !== 0){
+                            result = div1/div2;
+                            document.getElementById('kquachia').value=result;
+                            historyText=`Phép chia ${div1}/${div2}=${result}`;
+                        } else {
+                            result='Không chia cho 0';
+                            document.getElementById('kquachia').value=result;
+                            historyText=`Phép chia ${div1} / ${div2} = ${result}`;
+                        }
+                        addHistory(historyText,'div');
+                        break;
+                }
+            }
+            function addHistory(text, type){
+                const history=document.getElementById('his');
+                const div = document.createElement('div');
+                div.textContent=text;
+                div.className=type;
+                history.appendChild(div);
+            }
+        </script> -->
+</body>
+</html>
