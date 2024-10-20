@@ -1,13 +1,6 @@
+const menuIcon = document.querySelector('#menu-icon');
+const navLinks = document.querySelector('.nav-links');
 
-let soNgauNhien = Math.floor(Math.random() * 10) + 1;
-
-function kiemTraDoan() {
-    const soNguoiDungDoan = parseInt(document.getElementById('guessInput').value);
-    const hienThiKetQua = document.getElementById('ketQua');
-
-    if (soNguoiDungDoan === soNgauNhien) {
-        hienThiKetQua.textContent = "Chúc mừng!";
-    } else {
-        hienThiKetQua.textContent = "Sai rồi, hãy thử lại.";
-    }
+menuIcon.onclick = () => {
+    navLinks.classList.toggle('active');
 }
